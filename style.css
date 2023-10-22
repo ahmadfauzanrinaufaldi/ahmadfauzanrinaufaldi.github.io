@@ -1,1 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+.frame {
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+    background-color:    #c6ac8f;
+    border: 5px solid #333;
+    border-radius: 50px;
+    overflow:hidden;
+}
+
+img {
+    width: 100%;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #181818;
+    text-align: justify;
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-logo {
+    color:#ccc;
+    font-weight: 500;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.nav-logo:hover{
+    color:#323232;
+}.link a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #fff;
+}
+
+.link a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1d4ed8;
+    transition: all 0.3s ease;
+}
+.link a::hover::after {
+    width: 70%;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+.blur {
+    position: absolute;
+    box-shadow: 0 0 1000px 50px #1d4ed8;
+    z-index: -100;
+}
+header {
+    position: relative;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+header .content h4 {
+    margin-bottom: 1rem;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 600;
+}
+header .content h1 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+header .content h1 span {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+header .content p {
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+header .image::before {
+    content: "o";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38rem;
+    font-weight: 400;
+    line-height: 20rem;
+    color: #1d4ed8;
+    opacity: 0.2;
+    z-index: -100;
+}
+
+header .image img {
+    max-width: 600px;
+    margin: auto;
+}
+
+section .header {
+    margin-bottom: 1rem;
+    color: #fff;
+    text-align: center;
+    font-size: 2.25rem; 
+    font-weight: 600;
+    
+}
+
+section .content h2{
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1rem;
+}
+.features {
+    margin-top: 0;
+    display: grid;
+    grid-template-areas: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.features .card {
+    background-color: #27272a;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.features .card:hover {
+    background-color: #323232;
+    border-color: #48cae4;
+}
+
+.features .card span {
+    display: inline-block;
+    padding: 2px 20px;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #fff;
+}
+.sub-header {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: #ccc;
+}
+.portfolio-card {
+    max-width: 250px;
+    background-color: transparent;
+    border: 2px solid #1d4ed8;
+    border-radius: 10px;
+    padding: 10px;
+    height: 350px;
+    margin: 10px;
+    display: inline-table;
+    text-align: center;
+}
+.portfolio-card img {
+    max-width: 100%;
+    height: 100px;
+    border-spacing: 5px;
+}
+.portfolio-card h2 {
+    color: #fff;
+    font-size: 24px;
+    margin: 10px 0;
+}
+.portfolio-card p {
+    font-size: 16px;
+    color: #777;
+}
+.contact-grid{
+    row-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+.contact-information{
+    display: flex;
+    margin-bottom: 2rem;
+}
+.contact_icon{
+    font-size: 2rem;
+    color: #ccc;
+    margin-right: 0.75rem;
+}
+.contact-information h3{
+    margin-top: 0.5rem;
+    font-size: 1.125rem ;
+    font-weight: medium;
+    color: #fff;
+
+}
+.contact-information span{
+    font-size: 0.8rem ;
+    color:#777 ;
+}
+.contact-content{
+    border-radius: .5rem;
+    padding: .75rem 1rem .25rem;
+    color:#ccc
+    }
+
+.contact-label{
+    font-size: 0.75rem;
+    color: #fff ;
+}
+.contact_form{
+    width: 460px;
+}
+.contact_inputs{
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    color: black;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    padding: .25rem .5rem .5rem 0;
+}
+footer{
+    position: relative;
+    padding-bottom: 2rem;
+    display: flexbox;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  footer .content h1{
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  
+  footer .content h2{
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-family: "" sans-serif;
+  }
+  
+  footer .content h2 span{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+  }
+  
+  footer .content p{
+    margin-top: 2rem;
+    color: #fff;
+    font-size: 2rem;
+  }
+  
+  footer .column .socials{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  footer .column .socials a{
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 1.25rem;
+    border-radius: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  footer .column .socials a:hover{
+    color: #fff;
+    background-color: #48cae4;
+    border-color: #1d4ed8;
+  }
+  
+  .copyright{
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  @media (widht < 900px){
+    .nav-links{
+      display: none;
+    }
+    header{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    header .image{
+      grid-area: 1/1/2/2;
+    }
+    .features{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    footer{
+      grid-template-columns: 1fr 200px;
+    }
+  }
+  
+  @media (widht < 600px){
+    header .image::before{
+      display: none;
+    }
+    .features{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .pricing{
+      grid-template-columns: repeat(1, 1fr);
+    }
+    footer{
+      grid-template-columns: 1fr 150px;
+    }
+  }
