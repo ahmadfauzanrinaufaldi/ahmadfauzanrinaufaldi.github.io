@@ -15,8 +15,7 @@ window.SITE = {
 
   /* ── Identity & contact ───────────────────────────────────────────────── */
   name: "Ahmad Fauzan Rinaufaldi",
-  shortName: "Rinaufaldi",
-  nickname: "Rinov",
+  nickname: "Rinov",                       // shown in the top-left logo and hero
   role: "Data Analyst · Data Engineer",
   title: "Information Systems Graduate | Data Analytics & Data Engineering",
   location: "Surabaya, Indonesia",
@@ -29,42 +28,268 @@ window.SITE = {
   resume: "assets/docs/Ahmad-Fauzan-Rinaufaldi-Resume.pdf",
   portfolioPdf: "assets/docs/Ahmad-Fauzan-Rinaufaldi-Portfolio.pdf",
 
-  /* Hero one-liner */
-  bio: "Information Systems graduate from Institut Teknologi Sepuluh Nopember (ITS), building end-to-end data pipelines and dashboards that turn raw, multi-source data into decisions — from a 779,000-tile BTS revenue forecasting system at Telkomsel to a hybrid deep learning model for stock price prediction.",
-
-  /* Logo row under the hero buttons — names must match a tool in `tools` below */
-  heroTools: ["Python", "MySQL", "Power BI", "Tableau", "TensorFlow", "Google Cloud", "Pentaho Data Integration"],
-
-  /* Education card (About section) */
-  education: {
-    school: "Institut Teknologi Sepuluh Nopember (ITS)",
-    degree: "Bachelor of Information Systems · 3.64/4.00",
-    dates: "Aug 2022 – Aug 2026 (graduated)",
-    logo: "assets/img/brands/its.png",
-    photo: "assets/img/photos/its-campus.webp"
-  },
-
-  /* ── About ─ one string per paragraph ─────────────────────────────────── */
-  about: [
-    "Information Systems graduate from Institut Teknologi Sepuluh Nopember (ITS), 3.64 GPA, with hands-on experience building end-to-end data analytics solutions — from raw multi-source data to insight-ready dashboards that support real decisions.",
-    "At Telkomsel, I built a machine learning-based revenue forecasting system for Base Transceiver Station (BTS) site evaluation, processing 779,000+ grid tiles and reaching 1.861% MAPE, visualized through a Streamlit dashboard to support BTS investment decisions across East Java. Before that, I spent two months on network performance analysis for Central Madura, integrating and visualizing tile-level network data in both Power BI and Tableau.",
-    "I applied the same forecasting approach in my final thesis, building a hybrid BiLSTM–Multi-Head Attention model to forecast BBCA (Bank Central Asia) stock prices, reaching 1.0727% MAPE — benchmarked against BiGRU, Stockformer, and traditional statistical baselines.",
-    "Beyond technical work, I led a 250+ member committee for ISE! 2024, a national technology event with 1,200+ participants, which shaped how I communicate across technical and non-technical teams alike. I'm looking to bring this combination — technical depth in data management and analytics, plus cross-functional leadership — into a role where I can keep building data systems people actually rely on."
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  heroHeadline: "I turn messy data into decisions.",
+  heroText: "Information Systems grad from ITS. Built a revenue forecasting system processing 779,000+ tiles at Telkomsel, plus a deep learning model for stock price prediction.",
+  heroStats: [
+    { value: "779,000+", label: "tiles processed" },
+    { value: "1.861%", label: "MAPE at Telkomsel" }
+  ],
+  /* Logo row under the hero buttons (file names in assets/logos/) */
+  heroTools: [
+    { name: "Python", logo: "assets/logos/python.svg" },
+    { name: "MySQL", logo: "assets/logos/mysql.svg" },
+    { name: "Power BI", logo: "assets/logos/powerbi.png" },
+    { name: "TensorFlow", logo: "assets/logos/tensorflow.svg" },
+    { name: "Google Cloud", logo: "assets/logos/google-cloud.svg" },
+    { name: "Pentaho Data Integration", logo: "assets/logos/pentaho.png" }
   ],
 
-  /* Big numbers under the About text */
+  /* ── About ─ keep to 2–3 sentences ─────────────────────────────────────
+   *  DRAFT copy built from your existing bio. Replace with your final text.
+   */
+  about: [
+    "I build end-to-end data analytics solutions — from raw multi-source data to insight-ready dashboards that support real decisions.",
+    "I want to keep building data systems people actually rely on, bringing technical depth in data management and analytics together with cross-functional leadership."
+  ],
   stats: [
     { value: "779,000+", label: "grid tiles processed at Telkomsel", icon: "grid" },
     { value: "1.861%", label: "MAPE on BTS revenue forecasting", icon: "target" },
     { value: "1.0727%", label: "MAPE on BBCA stock forecasting (thesis)", icon: "trend" },
     { value: "250+", label: "committee members led at ISE! 2024", icon: "users" }
   ],
+  education: {
+    school: "Institut Teknologi Sepuluh Nopember (ITS)",
+    degree: "Bachelor of Information Systems · 3.64/4.00",
+    dates: "Aug 2022 – Aug 2026 (graduated)",
+    logo: "assets/img/brands/its.png",
+    photo: "assets/img/photos/si-its.webp"
+  },
 
-  /* ── Experience ───────────────────────────────────────────────────────────
-   *  Newest first. A role either has `items` (bullet list) or `phases`
-   *  (sub-headings, each with its own bullets). `summary` is optional.
-   *  `logo` (image path) or `mark` (2–3 letters) shows beside the company.
-   *  `photo` (optional) shows a picture under the bullets.
+  /* ── Projects ─────────────────────────────────────────────────────────────
+   *  Card face: title, hook (one line), metric (optional), tags.
+   *  Click opens the detail view: desc, highlight, story, points, images, links.
+   *  featured: true  → big card in the main grid; otherwise "More projects".
+   *  docs = Google Drive short link (intip.in). Leave "" until you have one.
+   */
+  projects: [
+    {
+      featured: true,
+      icon: "map",
+      image: "assets/img/projects/bts.webp",
+      gallery: ["assets/img/projects/bts-geo.webp", "assets/img/projects/bts-pycaret.webp", "assets/img/projects/bts-features.webp"],
+      context: "Telkomsel",
+      title: "BTS Revenue Forecasting & Simulation System",
+      hook: "Spatial ML pipeline predicting revenue for new BTS sites across East Java.",
+      metric: "1.861%",
+      metricLabel: "MAPE at tile level",
+      tags: ["Python", "PyCaret", "LightGBM", "Voronoi spatial analysis", "cKDTree", "Streamlit"],
+      desc: "The flagship project. A spatial ML pipeline predicting revenue potential for new Base Transceiver Station locations across East Java, processing 779,000+ population tiles.",
+      highlight: "1.861% MAPE at tile level; simulation engine tested on real Surabaya and Malang candidate sites",
+      story: [
+        "My team and I built a system to predict revenue at the tile level and simulate new BTS towers revenue, using revenue data from 6,519 towers across East Java. The core problem was that revenue is only recorded at the tower level, but siting decisions need much finer detail.",
+        "We generated Voronoi polygons around each tower to define its service area, then spatially joined population tiles inside that area to disaggregate tower revenue down to roughly 779,000 tiles, weighted by each tile's share of the tower's population."
+      ],
+      points: [
+        "Feature engineering: urban/rural classification, competitor speed gap, a digital savviness index, and a Telkomsel dominance flag",
+        "Deliberately excluded lat/lon from the model, so it had to learn from population, speed, and competitor signals instead of memorizing locations",
+        "Used PyCaret to compare LightGBM, Random Forest, Decision Tree, and Ridge by R2. LightGBM won at 1.861% MAPE",
+        "Built a simulation engine for proposed tower sites: checks nearby tiles via spatial index, sums predicted revenue, then applies a cannibalization discount if a site is too close to existing coverage",
+        "Delivered results through a Streamlit dashboard for the network planning team to test locations themselves"
+      ],
+      docs: ""
+    },
+    {
+      featured: true,
+      icon: "signal",
+      image: "assets/img/projects/madura.webp",
+      gallery: ["assets/img/projects/madura-merge.webp"],
+      context: "Telkomsel",
+      title: "Central Madura Network Performance Dashboard",
+      hook: "Scored 6,000+ network tiles into Invest / Maintain / Monitor actions.",
+      metric: "6,000+",
+      metricLabel: "tiles covered",
+      tags: ["Python", "Folium", "Power BI", "Tableau"],
+      desc: "Integrated three tile-level network datasets into a scored, action-recommending dashboard covering 6,000+ tiles.",
+      highlight: "Rule-based tile classification driving Invest / Maintain / Monitor recommendations",
+      story: [
+        "My internship at Telkomsel ran in two phases. The first two months were network performance analysis for Central Madura: collecting and integrating raw network data, cleaning it into a usable dataset, and visualizing it in Power BI and Tableau so the team could track performance across the area."
+      ],
+      docs: ""
+    },
+    {
+      featured: true,
+      icon: "trend",
+      image: "assets/img/projects/bbca-app.webp",
+      gallery: ["assets/img/projects/bbca.webp", "assets/img/projects/bbca-results.webp"],
+      context: "Final Thesis",
+      title: "BBCA Stock Price Forecasting — Hybrid BiLSTM-Multi-Head Attention",
+      hook: "Hybrid deep learning model forecasting BBCA daily closing prices.",
+      metric: "1.0727%",
+      metricLabel: "MAPE, best single run",
+      tags: ["Python", "TensorFlow/Keras", "Streamlit"],
+      desc: "A hybrid deep learning model forecasting BBCA daily closing price, benchmarked against BiGRU, Stockformer, and statistical baselines (DMA, EMA).",
+      highlight: "Best single run 1.0727% MAPE (R² 0.9674); deployed in an interactive Streamlit forecasting app",
+      story: [
+        "The interesting part wasn't a clean win for the more complex model. My baseline BiLSTM actually produced the single best result across all experiments: 1.07267% MAPE at a 70:30 split, 128 LSTM units. The attention mechanism traded peak performance for stability, not a universal upgrade.",
+        "Implementation-wise, I modified an existing baseline comparison notebook to integrate my models, resolved a scaler mismatch between joblib and pickle formats, and reconstructed return-based outputs back into absolute prices so every model could be compared on the same scale.",
+        "I packaged the results into a Streamlit app where users can pick between BBCA, BBRI, or TLKM, set a forecast horizon, and download predictions as CSV."
+      ],
+      docs: "https://intip.in/FinalThesis"
+    },
+    {
+      featured: true,
+      icon: "gauge",
+      image: "assets/img/projects/itsec.webp",
+      gallery: ["assets/img/projects/itsec-2.webp", "assets/img/projects/itsec-3.webp", "assets/img/projects/itsec-4.webp"],
+      context: "PT ITSEC Asia",
+      title: "IT Balanced Scorecard Dashboard — PT ITSEC Asia Case Study",
+      hook: "Power BI scorecard across Jakarta HQ and two branch offices.",
+      metric: "16",
+      metricLabel: "KPIs across 4 IT-BSC perspectives",
+      tags: ["MySQL", "DBeaver", "Power BI"],
+      desc: "A Power BI dashboard applying the IT Balanced Scorecard framework across Jakarta HQ and two branch offices.",
+      highlight: "16 KPIs tracked across 4 IT-BSC perspectives (Corporate Contribution, Customer Orientation, Operational Excellence, Future Orientation)",
+      story: [
+        "For my IT Organization Monitoring and Evaluation final project, my team and I built a Power BI dashboard applying the IT Balanced Scorecard framework to PT ITSEC Asia, working with the company to understand their real structure and context, covering the Jakarta headquarters and two branch offices.",
+        "Since the company's actual data couldn't be used publicly, we generated realistic dashboard data with Mockaroo, modeled on the real organizational structure and KPIs ITSEC gave us. We tracked 16 KPIs across the four IT-BSC perspectives: Corporate Contribution, Customer Orientation, Operational Excellence, and Future Orientation, structured in MySQL and DBeaver, then visualized in Power BI.",
+        "The resulting dashboard gives localized views per branch, tracking service availability, cybersecurity incidents, client satisfaction, and project delivery, so management can see where each office stands rather than only a company-wide average."
+      ],
+      docs: "https://intip.in/ITSECDashboard"
+    },
+    {
+      featured: true,
+      icon: "database",
+      image: "assets/img/projects/warehouse.webp",
+      gallery: ["assets/img/projects/warehouse-erd.webp"],
+      context: "Data Warehouse",
+      title: "Multi-Source Data Warehouse & Dashboard",
+      hook: "Star-schema warehouse joining admissions and BMKG weather data for Aceh.",
+      metric: "3",
+      metricLabel: "source formats integrated",
+      tags: ["DBeaver", "Pentaho Data Integration (PDI)"],
+      desc: "A star-schema data warehouse integrating scholarship admissions, university admissions, and BMKG weather forecast data for Aceh.",
+      highlight: "End-to-end ETL — standardized and loaded three inconsistent source formats into one reporting-ready structure",
+      story: [
+        "For my Data Lakehouse course final project, I built a data warehouse that pulls together scholarship admissions data, general university admissions data, and BMKG weather forecasts for Aceh into one system scholarship organizations could use to make allocation decisions.",
+        "The hard part wasn't any single dataset. It was getting structured data, like admissions records, and less structured data, like weather forecasts, to sit in the same warehouse in a way that actually made sense for analysis. I designed the schema in DBeaver: one fact table for the admissions process, with separate dimension tables for applicants, program choices, majors, time periods, province, scholarship type, and weather. Then I built the ETL pipelines in Pentaho to clean and load everything in.",
+        "The end result is a Power BI dashboard that lets you slice applicant and scholarship data by region, income category, and score distribution, with weather data layered in as context."
+      ],
+      docs: "https://intip.in/DataLakehouse"
+    },
+    {
+      featured: true,
+      icon: "plane",
+      image: "assets/img/projects/kualanamu.webp",
+      gallery: ["assets/img/projects/kualanamu-rf.webp", "assets/img/projects/kualanamu-hybrid.webp"],
+      context: "Time Series",
+      title: "Domestic Passenger Forecasting — Kualanamu International Airport",
+      hook: "SARIMA vs Random Forest vs hybrid GRU-RF for airport passenger forecasting.",
+      metric: "3",
+      metricLabel: "models benchmarked",
+      tags: ["Python", "statsmodels", "scikit-learn"],
+      desc: "Time series forecasting using SARIMA, Random Forest, and a hybrid GRU-Random Forest model, benchmarked across multiple train/test splits.",
+      story: [
+        "For my Predictive Modeling and Analytics final project, my team and I forecasted passenger arrivals at Kualanamu International Airport, aiming to give the aviation sector something useful for planning around seasonal traffic.",
+        "Random Forest actually came out the most accurate of the three, which wasn't what we expected given how much more complex the hybrid model was. The GRU-RF hybrid showed some promise but didn't clearly beat the simpler model on this dataset."
+      ],
+      docs: "https://intip.in/TimeSeriesForecasting"
+    },
+
+    /* More projects (smaller cards) */
+    {
+      icon: "route",
+      image: "assets/img/projects/route.webp",
+      gallery: ["assets/img/projects/route-plot.webp"],
+      context: "Soft Computing",
+      title: "DKI Jakarta Park Cleaning Route Optimization",
+      hook: "GA, ACO and hybrid ACO+2-opt routing for park inspections.",
+      tags: ["GA", "ACO", "ACO+2-opt", "K-Means"],
+      desc: "DKI Jakarta park cleaning route optimization (GA, ACO, hybrid ACO+2-opt, K-Means).",
+      story: [
+        "For my Soft Computing final project, I built a route optimization system for park cleaning inspections in Jakarta, using open-source park data I found online and building out a realistic inspection scenario around it. I applied Genetic Algorithm, Ant Colony Optimization, and a hybrid ACO with 2-opt local search to solve it as a Vehicle Routing Problem with Time Windows.",
+        "The scenario had constraints meant to reflect real operating conditions: an 8-hour operational window, vehicle speeds varying between 30 and 50 km/h depending on traffic density, and a fixed 30-minute inspection duration at each stop. I also applied K-Means clustering to zone the city first, which helped the routing algorithms scale instead of trying to solve the whole city at once.",
+        "Output included 2D and interactive route maps and convergence analysis comparing how each algorithm performed against the others."
+      ],
+      docs: "https://intip.in/RouteOptimization"
+    },
+    {
+      icon: "network",
+      image: "assets/img/projects/ontology.webp",
+      gallery: ["assets/img/projects/ontology-ui.webp"],
+      context: "Cognitive Systems",
+      title: "Ontology-Based Expert System for Vespa Fault Diagnosis",
+      hook: "Protégé ontology and SWRL rules built with a real service center.",
+      tags: ["Protégé", "SWRL", "Figma"],
+      desc: "Ontology-based expert system for Vespa scooter fault diagnosis (Protégé, SWRL rules, built with a real service center).",
+      story: [
+        "Given a set of symptoms, the system doesn't just name a likely fault category, it also suggests preliminary repair actions. I prototyped a supporting UI in Figma to visualize the diagnostic workflow, since the ontology itself isn't something a mechanic would want to look at directly.",
+        "Working with real service center experts was the part that made this more than an academic exercise, it meant translating tacit, experience-based knowledge into something a rule-based system could actually reason over."
+      ],
+      docs: "https://intip.in/Ontology"
+    },
+    {
+      icon: "cloud",
+      context: "DevOps",
+      title: "FullstackExpense — DevOps for a Fullstack Expense Tracker",
+      hook: "CI/CD with GitHub Actions deploying to Google Cloud Run.",
+      tags: ["Firebase", "GitHub Actions", "Google Cloud Run"],
+      desc: "FullstackExpense — fullstack expense tracker (Firebase, CI/CD via GitHub Actions, Google Cloud Run).",
+      story: [
+        "For my System Development and Operations final project, my team and I took an open-source expense tracker from GitHub and turned it into a production-ready system, building a real CI/CD pipeline instead of deploying by hand.",
+        "We refined the frontend with dynamic input formatting and real-time balance updates, and migrated the backend to Firebase for both authentication and Firestore. We used Cloud Logging and Monitoring to keep an eye on the deployed app once it was live."
+      ],
+      repo: "https://github.com/chrsthper/FullstackExpense",
+      docs: "https://intip.in/DevopsProject"
+    },
+    {
+      icon: "pen",
+      image: "assets/img/projects/mamikos.webp",
+      gallery: ["assets/img/projects/mamikos-pitch.webp"],
+      context: "UX Design",
+      title: "e-CCWS — UX Redesign of Mamikos",
+      hook: "Research-to-prototype redesign of an accommodation search app.",
+      tags: ["Figma", "User research", "Wizard of Oz testing"],
+      desc: "e-CCWS — UX redesign case study of the Mamikos app (Figma, user research, Wizard of Oz testing).",
+      story: [
+        "For my User Experience Design final project, my team and I redesigned Mamikos, an accommodation search platform in Indonesia, working through the full design process from research to a working prototype.",
+        "We also used the Wizard of Oz technique, simulating backend automation with hardcoded content, to test the concept without building real database integration.",
+        "Four months of work with my team, Mico, Diva, Rani, and Qintha, ending in a pitch deck, final report, and a working Figma prototype."
+      ],
+      docs: "https://intip.in/RedesignMamikos"
+    },
+    {
+      icon: "flame",
+      image: "assets/img/projects/bushfire.webp",
+      gallery: ["assets/img/projects/bushfire-scatter.webp"],
+      context: "Diagnostic Analytics",
+      title: "Wildfire & Weather Analytics — Western Australia",
+      hook: "Clustering suburbs into bushfire risk zones from BOM weather data.",
+      tags: ["Python", "K-Means", "Regression"],
+      desc: "Wildfire/weather analytics in Western Australia (BOM data, clustering, regression).",
+      story: [
+        "For my Data and Diagnostic Analytics final project, my team and I looked at temperature trends and bushfire incidents across suburbs in Western Australia, trying to surface patterns that could inform fire prevention planning.",
+        "We started with descriptive statistics and visualizations to see how temperature and bushfire frequency moved over time, then applied K-Means clustering to group suburbs into risk zones based on temperature and burn frequency, and linear regression to test the relationship between maximum temperature and fire frequency. All of it was done in Python, as a team of four.",
+        "The clustering was the more useful part of the two: it let us group suburbs by risk level instead of just looking at raw counts, giving a clearer picture of where fire prevention resources might matter most."
+      ],
+      docs: "https://intip.in/BushfireAnalysisData"
+    },
+    {
+      icon: "text",
+      context: "Research",
+      title: "Instagram Topic Modeling using LDA",
+      hook: "NLP topic modeling on social media text (co-authored).",
+      tags: ["NLP", "LDA", "Topic modeling"],
+      desc: "\"Instagram Topic Modeling using LDA\" — NLP/topic modeling on social media text (co-authored).",
+      docs: ""
+    }
+  ],
+
+  /* ── Work experience ──────────────────────────────────────────────────────
+   *  highlights = the 1–2 bullets shown before "Show more". Copy them exactly
+   *  from items/phases below; everything else stays behind the toggle.
+   *  logo (image) or mark (2–3 letters) sits beside the company.
+   *  photos = pictures shown in the role card.
    */
   experience: [
     {
@@ -74,8 +299,14 @@ window.SITE = {
       dates: "Jul 2025 – Dec 2025",
       tag: "Internship",
       logo: "assets/img/brands/telkomsel.png",
-      photo: "assets/img/photos/telkomsel-internship.webp",
-      photoAlt: "Internship activities with the Network Performance Analysis and Consolidation team at Telkomsel",
+      photos: [
+        { src: "assets/img/photos/telkomsel-internship.webp", alt: "Internship activities with the Network Performance Analysis and Consolidation team at Telkomsel" },
+        { src: "assets/img/photos/telkomsel-speaker.webp", alt: "Speaking as a Telkomsel intern at the HMSI ITS company visit" }
+      ],
+      highlights: [
+        "Built a spatial data pipeline integrating BTS revenue, population tiles (774,290 tiles across East Java), competitor speed data, and BPS demographic data",
+        "Delivered results through a Streamlit dashboard supporting BTS investment decisions across the Jawa-Bali region"
+      ],
       summary: "Two-phase internship in the Network Performance Analysis and Consolidation division, working alongside two teammates (Chris and Farel) under mentor Adyanto Hediawan Putra.",
       phases: [
         {
@@ -105,7 +336,14 @@ window.SITE = {
       location: "Surabaya, Indonesia",
       dates: "Jan 2025 – Feb 2025",
       tag: "Internship",
-      mark: "PMS",
+      logo: "assets/img/brands/pelindo.png",
+      photos: [
+        { src: "assets/img/photos/pelindo-intern.webp", alt: "Intern group at PT Pelindo Marine Service" }
+      ],
+      highlights: [
+        "Designed Entity Relationship Diagrams (ERDs) for the MAROON and MARDOC applications to support structured database development",
+        "Collected, structured, and finalized the blueprint document for the IMAIS application module"
+      ],
       items: [
         "Learned the Department's operational administrative activities, including drafting and archiving SOP/Work Instruction documents in line with ISO standards",
         "Collected, structured, and finalized the blueprint document for the IMAIS application module",
@@ -119,7 +357,14 @@ window.SITE = {
       location: "Surabaya, Indonesia",
       dates: "Nov 2023 – Present",
       tag: "Part-time",
-      mark: "DBL",
+      logo: "assets/img/brands/dbl.png",
+      photos: [
+        { src: "assets/img/photos/dbl-crew.webp", alt: "DBL Academy coaching crew" }
+      ],
+      highlights: [
+        "Trains 100–130 children weekly across 6–8 classes, adapting communication and coaching to each age group",
+        "Organized an internal competition event with fellow coaches, coordinating execution and field data entry for 200+ students over a 2-week period"
+      ],
       items: [
         "Trains 100–130 children weekly across 6–8 classes, adapting communication and coaching to each age group",
         "Compiles periodic progress-assessment reports each program trimester",
@@ -128,155 +373,66 @@ window.SITE = {
     }
   ],
 
-  /* Leadership — shown as its own block under Experience */
-  leadership: [
-    {
-      company: "Information Systems Expo (ISE!) 2024",
-      role: "Project Officer (Chairperson)",
-      location: "Surabaya, Indonesia",
-      dates: "Jan 2024 – Dec 2024",
-      tag: "Leadership",
-      mark: "ISE!",
-      photo: "assets/img/photos/ise-2024.webp",
-      photoAlt: "ISE! 2024 committee group photo",
-      items: [
-        "Led a national technology event engaging 1,200+ participants nationwide, directing a core executive team and 10 divisions totaling 250+ committee members",
-        "Handled strategic planning, risk mitigation, budgeting, and execution across five major sub-events: BIONIX (national IT/business olympiad), RISE (national business case competition), ISE! Academy (public data science bootcamp), and IS CLASS (campus visit & outreach)"
-      ]
-    }
-  ],
-  leadershipNote: "Additional committee and organizational roles (2022–2024): SRE ITS SC, HMSI ITS, and 6 other university-level event committees — see LinkedIn/portfolio PDF for full list.",
-
-  /* ── Featured projects ────────────────────────────────────────────────────
-   *  metric + metricLabel = the big headline number on the card.
-   *  icon = map | signal | trend | gauge | database | plane (line icon on the card)
-   *  image (optional) = a screenshot path, e.g. "assets/img/projects/bts.webp"
-   */
-  projects: [
-    {
-      icon: "map",
-      image: "assets/img/projects/bts.webp",
-      context: "Telkomsel",
-      metric: "1.861%",
-      metricLabel: "MAPE at tile level",
-      title: "BTS Revenue Forecasting & Simulation System",
-      desc: "The flagship project. A spatial ML pipeline predicting revenue potential for new Base Transceiver Station locations across East Java, processing 779,000+ population tiles.",
-      highlight: "1.861% MAPE at tile level; simulation engine tested on real Surabaya and Malang candidate sites",
-      tags: ["Python", "PyCaret", "LightGBM", "Voronoi spatial analysis", "cKDTree", "Streamlit"]
-    },
-    {
-      icon: "signal",
-      image: "assets/img/projects/madura.webp",
-      context: "Telkomsel",
-      metric: "6,000+",
-      metricLabel: "tiles covered",
-      title: "Central Madura Network Performance Dashboard",
-      desc: "Integrated three tile-level network datasets into a scored, action-recommending dashboard covering 6,000+ tiles.",
-      highlight: "Rule-based tile classification driving Invest / Maintain / Monitor recommendations",
-      tags: ["Python", "Folium", "Power BI", "Tableau"]
-    },
-    {
-      icon: "trend",
-      image: "assets/img/projects/bbca.webp",
-      context: "Final Thesis",
-      metric: "1.0727%",
-      metricLabel: "MAPE, best single run (R² 0.9674)",
-      title: "BBCA Stock Price Forecasting — Hybrid BiLSTM-Multi-Head Attention",
-      desc: "A hybrid deep learning model forecasting BBCA daily closing price, benchmarked against BiGRU, Stockformer, and statistical baselines (DMA, EMA).",
-      highlight: "Best single run 1.0727% MAPE (R² 0.9674); deployed in an interactive Streamlit forecasting app",
-      tags: ["Python", "TensorFlow/Keras", "Streamlit"]
-    },
-    {
-      icon: "gauge",
-      context: "PT ITSEC Asia",
-      metric: "16",
-      metricLabel: "KPIs across 4 IT-BSC perspectives",
-      title: "IT Balanced Scorecard Dashboard — PT ITSEC Asia Case Study",
-      desc: "A Power BI dashboard applying the IT Balanced Scorecard framework across Jakarta HQ and two branch offices.",
-      highlight: "16 KPIs tracked across 4 IT-BSC perspectives (Corporate Contribution, Customer Orientation, Operational Excellence, Future Orientation)",
-      tags: ["MySQL", "DBeaver", "Power BI"]
-    },
-    {
-      icon: "database",
-      image: "assets/img/projects/warehouse.webp",
-      context: "Data Warehouse",
-      metric: "3",
-      metricLabel: "source formats integrated",
-      title: "Multi-Source Data Warehouse & Dashboard",
-      desc: "A star-schema data warehouse integrating scholarship admissions, university admissions, and BMKG weather forecast data for Aceh.",
-      highlight: "End-to-end ETL — standardized and loaded three inconsistent source formats into one reporting-ready structure",
-      tags: ["DBeaver", "Pentaho Data Integration (PDI)"]
-    },
-    {
-      icon: "plane",
-      image: "assets/img/projects/kualanamu.webp",
-      context: "Time Series",
-      metric: "3",
-      metricLabel: "models benchmarked",
-      title: "Domestic Passenger Forecasting — Kualanamu International Airport",
-      desc: "Time series forecasting using SARIMA, Random Forest, and a hybrid GRU-Random Forest model, benchmarked across multiple train/test splits.",
-      tags: ["Python", "statsmodels", "scikit-learn"]
-    }
+  /* ── Organizational experience ──────────────────────────────────────────── */
+  orgFeatured: {
+    name: "Information Systems Expo (ISE!) 2024",
+    role: "Project Officer (Chairperson)",
+    location: "Surabaya, Indonesia",
+    dates: "Jan 2024 – Dec 2024",
+    photo: "assets/img/photos/ise-2024-stage.webp",
+    photoAlt: "Rinov speaking on stage at ISE! 2024",
+    photo2: "assets/img/photos/ise-2024.webp",
+    photo2Alt: "ISE! 2024 committee group photo",
+    stats: [
+      { value: "250+", label: "committee members" },
+      { value: "1,200+", label: "participants nationwide" },
+      { value: "10", label: "divisions" }
+    ],
+    items: [
+      "Led a national technology event engaging 1,200+ participants nationwide, directing a core executive team and 10 divisions totaling 250+ committee members",
+      "Handled strategic planning, risk mitigation, budgeting, and execution across five major sub-events: BIONIX (national IT/business olympiad), RISE (national business case competition), ISE! Academy (public data science bootcamp), and IS CLASS (campus visit & outreach)"
+    ]
+  },
+  /* Compact list — role + year only. photo is optional. */
+  orgRoles: [
+    { name: "SRE ITS SC", role: "Staff of Competency Development", year: "2023/2024" },
+    { name: "HMSI ITS", role: "Internship Staff of Internal Affairs", year: "", photo: "assets/img/org/hmsi-its.webp" },
+    { name: "ITS Sport Competition — Dies Natalis 63", role: "Event Staff", year: "2023", photo: "assets/img/org/isc-2023.webp" },
+    { name: "ISE! 2023", role: "Paradigm Event FOH Staff", year: "2023", photo: "assets/img/org/ise-2023.webp" },
+    { name: "GERIGI ITS 2023", role: "Staff of Main Event", year: "2023", photo: "assets/img/org/gerigi-2023.webp" },
+    { name: "TEDxITS 2023", role: "Staff of Logistics and Consumption", year: "2023", photo: "assets/img/org/tedxits-2023.webp" },
+    { name: "Futurest 2023", role: "Volunteer of Exhibition", year: "2023", photo: "assets/img/org/futurest-2023.webp" },
+    { name: "Ini Lho ITS! 2023", role: "Staff of Logistics, Tools, & Equipments", year: "2023", photo: "assets/img/org/ini-lho-its-2023.webp" }
   ],
 
-  /* Compact "More projects" list under the cards */
-  moreProjects: [
-    "Ontology-based expert system for Vespa scooter fault diagnosis (Protégé, SWRL rules, built with a real service center)",
-    "DKI Jakarta park cleaning route optimization (GA, ACO, hybrid ACO+2-opt, K-Means)",
-    "FullstackExpense — fullstack expense tracker (Firebase, CI/CD via GitHub Actions, Google Cloud Run)",
-    "e-CCWS — UX redesign case study of the Mamikos app (Figma, user research, Wizard of Oz testing)",
-    "Wildfire/weather analytics in Western Australia (BOM data, clustering, regression)",
-    "\"Instagram Topic Modeling using LDA\" — NLP/topic modeling on social media text (co-authored)"
-  ],
-
-  /* ── Tools ─ logo tiles in the Skills section ─────────────────────────────
-   *  logo = image in assets/logos/. No logo? Use `mark` (short text) instead.
-   */
-  tools: [
-    { group: "Data & Languages", items: [
-      { name: "Python", logo: "assets/logos/python.svg" },
-      { name: "SQL", mark: "SQL" },
-      { name: "MySQL", logo: "assets/logos/mysql.svg" },
-      { name: "Pandas", mark: "pd" },
-      { name: "Excel", logo: "assets/logos/excel.svg" }
-    ] },
-    { group: "ETL & Databases", items: [
-      { name: "Pentaho Data Integration", logo: "assets/logos/pentaho.png" },
-      { name: "DBeaver", logo: "assets/logos/dbeaver.png" }
-    ] },
-    { group: "Machine Learning", items: [
-      { name: "TensorFlow", logo: "assets/logos/tensorflow.svg" },
-      { name: "scikit-learn", mark: "sk" },
-      { name: "LightGBM", mark: "LGB" },
-      { name: "PyCaret", mark: "PyC" }
+  /* ── Skills ─ compact tag chips per category. logo is optional. ──────── */
+  skills: [
+    { group: "Data Management & Engineering", items: [
+      { name: "SQL" }, { name: "MySQL", logo: "assets/logos/mysql-dark.svg" }, { name: "Python (Pandas, Scikit-learn)", logo: "assets/logos/python.svg" },
+      { name: "Pentaho Data Integration", logo: "assets/logos/pentaho.png" }, { name: "DBeaver", logo: "assets/logos/dbeaver.png" },
+      { name: "Advanced Excel", logo: "assets/logos/excel.svg" }, { name: "Data Cleaning & Anomaly Detection" }
     ] },
     { group: "BI & Visualization", items: [
-      { name: "Power BI", logo: "assets/logos/powerbi.png" },
-      { name: "Tableau", mark: "Tab" },
-      { name: "Streamlit", mark: "St" },
-      { name: "Folium", mark: "Fol" }
+      { name: "Power BI", logo: "assets/logos/powerbi.png" }, { name: "Tableau" }, { name: "Streamlit" },
+      { name: "Dashboard & KPI Design" }, { name: "Folium" }
     ] },
-    { group: "Cloud & Dev Tools", items: [
-      { name: "Google Cloud", logo: "assets/logos/google-cloud.svg" },
-      { name: "Firebase", logo: "assets/logos/firebase.svg" },
-      { name: "GitHub", logo: "assets/logos/github.svg" },
-      { name: "Visual Studio Code", logo: "assets/logos/vscode.svg" },
-      { name: "Google Colab", logo: "assets/logos/colab.svg" }
+    { group: "ML & Forecasting", items: [
+      { name: "LightGBM" }, { name: "Random Forest" }, { name: "PyCaret" }, { name: "BiLSTM" },
+      { name: "Multi-Head Attention" }, { name: "TensorFlow/Keras", logo: "assets/logos/tensorflow.svg" }, { name: "SARIMA" }
     ] },
-    { group: "Design & Knowledge", items: [
-      { name: "Figma", logo: "assets/logos/figma.svg" },
+    { group: "Cloud", items: [
+      { name: "Google Cloud (Vertex AI, BigLake, Document AI, DLP)", logo: "assets/logos/google-cloud.svg" },
+      { name: "Firebase", logo: "assets/logos/firebase.svg" }
+    ] },
+    { group: "Dev & Design Tools", items: [
+      { name: "GitHub", logo: "assets/logos/github-dark.svg" }, { name: "VS Code", logo: "assets/logos/vscode.svg" },
+      { name: "Google Colab", logo: "assets/logos/colab.svg" }, { name: "Figma", logo: "assets/logos/figma.svg" },
       { name: "Protégé", logo: "assets/logos/protege.png" }
+    ] },
+    { group: "Soft Skills", items: [
+      { name: "Cross-Functional Communication" }, { name: "Stakeholder Coordination" },
+      { name: "Detail-Oriented Documentation" }, { name: "Team Leadership" }
     ] }
-  ],
-
-  /* ── Skills ─ one block per group ─────────────────────────────────────── */
-  skills: [
-    { group: "Data Management & Engineering", items: ["SQL", "RDBMS (MySQL)", "Python (Pandas, Scikit-learn)", "ETL & Data Integration (Pentaho Data Integration, DBeaver)", "Advanced Excel", "Data Cleaning & Anomaly Detection"] },
-    { group: "Machine Learning & Forecasting", items: ["LightGBM", "Random Forest", "PyCaret", "BiLSTM", "Multi-Head Attention", "TensorFlow/Keras", "SARIMA"] },
-    { group: "Business Intelligence & Visualization", items: ["Power BI", "Tableau", "Streamlit", "Dashboard & KPI Design", "Folium"] },
-    { group: "Cloud", items: ["Google Cloud (Vertex AI, BigLake, Document AI, DLP)"] },
-    { group: "Design & Product", items: ["Figma (prototyping, UX research)"] },
-    { group: "Soft Skills", items: ["Cross-Functional Communication", "Stakeholder Coordination", "Detail-Oriented Documentation", "Team Leadership"] }
   ],
 
   /* ── Certifications ───────────────────────────────────────────────────── */
