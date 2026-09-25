@@ -296,7 +296,7 @@
       var name = c.url ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.name) + "</a>" : esc(c.name);
       return '<article class="cred reveal">' +
         (c.image ? zoomImg(c.image, c.name + " certificate", "certs", { cls: "cred-img" }) : "") +
-        '<div class="cred-body">' + (c.logo ? '<img class="cred-logo" src="' + esc(c.logo) + '" alt="" width="56" height="30" loading="lazy">' : "") +
+        '<div class="cred-body">' + (c.logo ? '<span class="cred-logo"><img src="' + esc(c.logo) + '" alt="' + esc(c.issuer) + ' logo" loading="lazy"></span>' : "") +
         '<h3 class="h4">' + name + '</h3><span class="muted">' + esc(c.issuer) + " · " + esc(c.year) + "</span></div></article>";
     }).join("") + "</div>";
 

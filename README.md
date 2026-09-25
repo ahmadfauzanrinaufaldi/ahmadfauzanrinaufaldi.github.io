@@ -9,7 +9,7 @@ All text lives in **`js/content.js`**. To add a role, project, skill or certific
 - New project screenshot: save it to `assets/img/projects/` (WebP or JPG, about 1000px wide), then add `image: "assets/img/projects/your-file.webp"` to that project.
 - New tool: add `{ name: "Tool", logo: "assets/logos/tool.svg" }` to a group in `tools`. No logo? Use `mark: "Tl"` instead of `logo`. Tool logos come from svgl.app.
 - New resume: replace `assets/docs/Ahmad-Fauzan-Rinaufaldi-Resume.pdf` and keep the same file name.
-- After editing CSS or JS, bump `?v=2` to `?v=3` in `index.html` so returning visitors get the new version.
+- Before every push, run `python tools/bust_cache.py`. It stamps the CSS/JS links in `index.html` with a hash of each file (`style.css?v=6e428ffe`), so browsers and GitHub Pages never serve a stale cached copy after a change.
 
 ## Structure
 

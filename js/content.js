@@ -341,7 +341,7 @@ window.SITE = {
       tag: "Internship",
       logo: "assets/img/brands/pelindo.png",
       photos: [
-        { src: "assets/img/photos/pelindo-intern.webp", alt: "Intern group at PT Pelindo Marine Service", focus: "50% 62%", ratio: "4 / 3" }
+        { src: "assets/img/photos/pelindo-intern.webp", alt: "Intern group at PT Pelindo Marine Service", focus: "50% 62%" }
       ],
       highlights: [
         "Designed Entity Relationship Diagrams (ERDs) for the MAROON and MARDOC applications to support structured database development",
@@ -362,7 +362,7 @@ window.SITE = {
       tag: "Part-time",
       logo: "assets/img/brands/dbl.png",
       photos: [
-        { src: "assets/img/photos/dbl-crew.webp", alt: "DBL Academy coaching crew", focus: "50% 67%", ratio: "4 / 3" }
+        { src: "assets/img/photos/dbl-crew.webp", alt: "DBL Academy coaching crew", focus: "50% 67%" }
       ],
       highlights: [
         "Trains 100–130 children weekly across 6–8 classes, adapting communication and coaching to each age group",
