@@ -15,6 +15,16 @@
   function list(items, cls) {
     return '<ul class="' + cls + '">' + items.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>";
   }
+  // Clickable image that opens the zoom view. group = images you can step through together.
+  function zoomImg(src, alt, group, opts) {
+    opts = opts || {};
+    return '<button type="button" class="zoom-btn' + (opts.cls ? " " + opts.cls : "") + '" data-zoom="' + esc(opts.full || src) +
+      '" data-group="' + esc(group) + '" data-alt="' + esc(alt) + '" aria-label="Enlarge image: ' + esc(alt) + '">' +
+      '<img src="' + esc(src) + '" alt="" loading="lazy" decoding="async"' +
+      (opts.focus || opts.ratio ? ' style="' + (opts.focus ? "object-position:" + esc(opts.focus) + ";" : "") + (opts.ratio ? "aspect-ratio:" + esc(opts.ratio) + ";" : "") + '"' : "") + ">" +
+      (opts.badge ? '<span class="zoom-count">' + esc(opts.badge) + "</span>" : "") +
+      '<span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg></span></button>';
+  }
   function svg(paths, cls) {
     return '<svg class="' + (cls || "icon-line") + '" viewBox="0 0 24 24" aria-hidden="true">' + paths + "</svg>";
   }
@@ -58,6 +68,7 @@
     portfolioPdf: S.portfolioPdf,
     linkedin: S.linkedin,
     github: S.github,
+    gmailCompose: S.gmailCompose,
     email: "mailto:" + S.email,
     phone: "tel:" + S.phone.replace(/[^\d+]/g, "")
   };
@@ -100,7 +111,7 @@
   /* ── Projects: cards + detail modal ───────────────── */
   function media(p, cls) {
     return p.image
-      ? '<img src="' + esc(p.image) + '" alt="" loading="lazy" decoding="async">'
+      ? '<img src="' + esc(p.image) + '" alt="" loading="lazy" decoding="async"' + (p.fit ? ' style="object-fit:' + esc(p.fit) + ';object-position:center"' : "") + ">"
       : '<div class="media-fallback ' + (cls || "") + '">' + svg(ICONS[p.icon] || ICONS.grid) + "</div>";
   }
   function card(p, i, small) {
@@ -128,13 +139,13 @@
   function openProject(p) {
     var imgs = [p.image].concat(p.gallery || []).filter(Boolean);
     var links = "";
-    if (p.docs) links += '<a class="btn btn-grad" href="' + esc(p.docs) + '" target="_blank" rel="noopener">' + svg(ICONS.folder) + "Supporting documents</a>";
+    if (p.docs) links += '<a class="btn btn-grad" href="' + esc(p.docs) + '" target="_blank" rel="noopener">' + svg(ICONS.folder) + esc(p.docsLabel || "Supporting documents") + "</a>";
     if (p.repo) links += '<a class="btn btn-ghost" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + svg(ICONS.code) + "GitHub repository</a>";
     if (!links) links = '<p class="muted small">Supporting documents link coming soon.</p>';
     var extra = imgs.slice(1);
     modalBody.innerHTML =
       (imgs.length
-        ? '<div class="modal-lead"><img src="' + esc(imgs[0]) + '" alt="' + esc(p.title) + ' — main screenshot" decoding="async"></div>'
+        ? '<div class="modal-lead">' + zoomImg(imgs[0], p.title + " — main screenshot", "project") + "</div>"
         : '<div class="modal-fallback">' + svg(ICONS[p.icon] || ICONS.grid) + "</div>") +
       '<div class="modal-content">' +
       '<span class="tag-soft">' + esc(p.context) + "</span>" +
@@ -148,7 +159,7 @@
       '<div class="btn-row modal-links">' + links + "</div>" +
       (extra.length
         ? '<div class="modal-gallery"><h3 class="eyebrow">More images</h3><div class="modal-gallery-grid">' + extra.map(function (src, k) {
-            return '<img src="' + esc(src) + '" alt="' + esc(p.title) + " — image " + (k + 2) + '" loading="lazy" decoding="async">';
+            return zoomImg(src, p.title + " — image " + (k + 2), "project");
           }).join("") + "</div></div>"
         : "") +
       "</div>";
@@ -197,7 +208,7 @@
       : (j.items || []).filter(function (b) { return hl.indexOf(b) < 0; }).length;
     var id = "role-more-" + idx;
     var photos = (j.photos || []).map(function (ph) {
-      return '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt || "") + '" loading="lazy" decoding="async">';
+      return zoomImg(ph.src, ph.alt || j.company, "role-" + idx, { focus: ph.focus, ratio: ph.ratio });
     }).join("");
     return '<li class="role reveal">' +
       '<div class="role-side">' +
@@ -231,8 +242,10 @@
   var f = S.orgFeatured;
   $("org-featured").innerHTML =
     '<div class="org-photos">' +
-    '<img class="org-photo-main" src="' + esc(f.photo) + '" alt="' + esc(f.photoAlt) + '" loading="lazy" decoding="async">' +
-    (f.photo2 ? '<img class="org-photo-sub" src="' + esc(f.photo2) + '" alt="' + esc(f.photo2Alt) + '" loading="lazy" decoding="async">' : "") +
+    zoomImg(f.photo, f.photoAlt, "ise", { cls: "org-photo-main" }) +
+    ((f.crew || []).length
+      ? '<div class="org-crew">' + f.crew.map(function (c) { return zoomImg(c.src, c.alt, "ise"); }).join("") + "</div>"
+      : "") +
     "</div>" +
     '<div class="org-body">' +
     '<span class="tag-soft">Featured · Leadership</span>' +
@@ -243,9 +256,20 @@
     }).join("") + "</div>" +
     list(f.items, "bullets") +
     "</div>";
-  $("org-list").innerHTML = S.orgRoles.map(function (o) {
-    return '<li class="org-item reveal">' +
-      (o.photo ? '<img src="' + esc(o.photo) + '" alt="' + esc(o.name) + ' committee photo" loading="lazy" decoding="async">' : '<span class="org-fallback">' + svg(ICONS.users) + "</span>") +
+  $("org-list").innerHTML = S.orgRoles.map(function (o, k) {
+    var gallery = o.photos || (o.photo ? [o.photo] : []);
+    var tile = o.photo || gallery[0];
+    var media = "";
+    if (tile) {
+      media = zoomImg(tile, o.name + " committee photo", "org-" + k, { full: gallery[0] || tile, focus: o.focus, badge: gallery.length > 1 ? "+" + (gallery.length - 1) : "" });
+      // extra images join the same group but stay hidden until the zoom view steps to them
+      media += gallery.slice(1).map(function (src, n) {
+        return '<button type="button" class="zoom-btn" hidden data-zoom="' + esc(src) + '" data-group="org-' + k + '" data-alt="' + esc(o.name) + " photo " + (n + 2) + '"></button>';
+      }).join("");
+    } else {
+      media = '<span class="org-fallback">' + svg(ICONS.users) + "</span>";
+    }
+    return '<li class="org-item reveal">' + media +
       '<div class="org-item-body"><h4>' + esc(o.name) + "</h4><p>" + esc(o.role) + "</p>" + (o.year ? '<span class="org-year">' + esc(o.year) + "</span>" : "") + "</div></li>";
   }).join("");
 
@@ -266,15 +290,59 @@
     '<article class="cred-main reveal"><div class="cred-head"><span class="tool-chip"><img src="assets/logos/google-cloud.svg" alt="" width="40" height="40"></span><div><h3 class="h3">' + gTitle +
     '</h3><span class="muted">Digital credentials · ' + esc(g.year) + "</span></div></div>" +
     '<ul class="badge-list">' + g.badges.map(function (b) {
-      return '<li><img src="' + esc(b.image) + '" alt="Google Cloud skill badge: ' + esc(b.name) + '" width="480" height="322" loading="lazy" decoding="async"><span>' + esc(b.name) + "</span></li>";
+      return "<li>" + zoomImg(b.image, "Google Cloud skill badge: " + b.name, "gcp") + "<span>" + esc(b.name) + "</span></li>";
     }).join("") + "</ul></article>" +
     '<div class="cred-side">' + S.certifications.map(function (c) {
       var name = c.url ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.name) + "</a>" : esc(c.name);
       return '<article class="cred reveal">' +
-        (c.image ? '<img class="cred-img" src="' + esc(c.image) + '" alt="' + esc(c.name) + ' certificate" loading="lazy" decoding="async">' : "") +
+        (c.image ? zoomImg(c.image, c.name + " certificate", "certs", { cls: "cred-img" }) : "") +
         '<div class="cred-body">' + (c.logo ? '<img class="cred-logo" src="' + esc(c.logo) + '" alt="" width="56" height="30" loading="lazy">' : "") +
         '<h3 class="h4">' + name + '</h3><span class="muted">' + esc(c.issuer) + " · " + esc(c.year) + "</span></div></article>";
     }).join("") + "</div>";
+
+  /* ── Image zoom view (projects, experience, organizations, credentials) ── */
+  var lb = $("lightbox");
+  var lbImg = $("lb-img");
+  var lbCap = $("lb-cap");
+  var lbItems = [];
+  var lbIndex = 0;
+  var lbTrigger = null;
+  function lbShow(i) {
+    lbIndex = (i + lbItems.length) % lbItems.length;
+    var b = lbItems[lbIndex];
+    lbImg.src = b.getAttribute("data-zoom");
+    lbImg.alt = b.getAttribute("data-alt") || "";
+    lbCap.textContent = (b.getAttribute("data-alt") || "") + (lbItems.length > 1 ? "  ·  " + (lbIndex + 1) + " / " + lbItems.length : "");
+    lb.classList.toggle("single", lbItems.length < 2);
+  }
+  function lbOpen(btn) {
+    var group = btn.getAttribute("data-group");
+    var scope = btn.closest("dialog") || document;
+    lbItems = Array.prototype.slice.call(scope.querySelectorAll('.zoom-btn[data-group="' + group + '"]'));
+    lbTrigger = btn;
+    lbShow(lbItems.indexOf(btn));
+    if (typeof lb.showModal === "function") lb.showModal(); else lb.setAttribute("open", "");
+    lb.querySelector(".lb-close").focus();
+  }
+  function lbClose() { if (typeof lb.close === "function") lb.close(); else lb.removeAttribute("open"); }
+  lb.addEventListener("close", function () { lbImg.removeAttribute("src"); if (lbTrigger) lbTrigger.focus(); });
+  // Escape should close only the zoom view, not the project detail underneath it
+  var lbClosing = false;
+  lb.addEventListener("cancel", function () { lbClosing = true; setTimeout(function () { lbClosing = false; }, 0); });
+  modal.addEventListener("cancel", function (ev) { if (lb.open || lbClosing) ev.preventDefault(); });
+  lb.querySelector(".lb-close").addEventListener("click", lbClose);
+  lb.querySelector(".lb-prev").addEventListener("click", function () { lbShow(lbIndex - 1); });
+  lb.querySelector(".lb-next").addEventListener("click", function () { lbShow(lbIndex + 1); });
+  lb.addEventListener("click", function (ev) { if (ev.target === lb || ev.target.classList.contains("lb-figure")) lbClose(); });
+  lb.addEventListener("keydown", function (ev) {
+    if (lbItems.length < 2) return;
+    if (ev.key === "ArrowRight") { ev.preventDefault(); lbShow(lbIndex + 1); }
+    if (ev.key === "ArrowLeft") { ev.preventDefault(); lbShow(lbIndex - 1); }
+  });
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".zoom-btn");
+    if (b) lbOpen(b);
+  });
 
   /* ── Contact (unchanged) ──────────────────────────── */
   function contactCard(icon, label, value, href, copy) {

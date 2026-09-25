@@ -25,12 +25,13 @@ window.SITE = {
   linkedinLabel: "linkedin.com/in/rinaufaldi",
   github: "https://github.com/ahmadfauzanrinaufaldi",
   githubLabel: "github.com/ahmadfauzanrinaufaldi",
+  gmailCompose: "https://mail.google.com/mail/?view=cm&to=rinaufaldi@gmail.com",
   resume: "assets/docs/Ahmad-Fauzan-Rinaufaldi-Resume.pdf",
   portfolioPdf: "assets/docs/Ahmad-Fauzan-Rinaufaldi-Portfolio.pdf",
 
   /* ── Hero ─────────────────────────────────────────────────────────────── */
   heroHeadline: "I turn messy data into decisions.",
-  heroText: "Information Systems grad from ITS. Built a revenue forecasting system processing 779,000+ tiles at Telkomsel, plus a deep learning model for stock price prediction.",
+  heroText: "Information Systems grad from ITS. Built a revenue forecasting system that processed 779,000+ tiles at Telkomsel and a deep learning model for stock price prediction.",
   heroStats: [
     { value: "779,000+", label: "tiles processed" },
     { value: "1.861%", label: "MAPE at Telkomsel" }
@@ -45,12 +46,10 @@ window.SITE = {
     { name: "Pentaho Data Integration", logo: "assets/logos/pentaho.png" }
   ],
 
-  /* ── About ─ keep to 2–3 sentences ─────────────────────────────────────
-   *  DRAFT copy built from your existing bio. Replace with your final text.
-   */
+  /* ── About ─ keep to 2–3 sentences, one string per paragraph ──────────── */
   about: [
-    "I build end-to-end data analytics solutions — from raw multi-source data to insight-ready dashboards that support real decisions.",
-    "I want to keep building data systems people actually rely on, bringing technical depth in data management and analytics together with cross-functional leadership."
+    "I build data analytics solutions that turn raw, multi-source data into dashboards people can act on.",
+    "I want to keep building data systems people actually rely on, combining technical depth in data management and analytics with cross-functional leadership."
   ],
   stats: [
     { value: "779,000+", label: "grid tiles processed at Telkomsel", icon: "grid" },
@@ -76,7 +75,8 @@ window.SITE = {
     {
       featured: true,
       icon: "map",
-      image: "assets/img/projects/bts.webp",
+      image: "assets/img/projects/bts-full.webp",
+      fit: "contain",   // show the whole screenshot on the card (dark bars instead of cropping)
       gallery: ["assets/img/projects/bts-geo.webp", "assets/img/projects/bts-pycaret.webp", "assets/img/projects/bts-features.webp"],
       context: "Telkomsel",
       title: "BTS Revenue Forecasting & Simulation System",
@@ -102,8 +102,8 @@ window.SITE = {
     {
       featured: true,
       icon: "signal",
-      image: "assets/img/projects/madura.webp",
-      gallery: ["assets/img/projects/madura-merge.webp"],
+      image: "assets/img/projects/madura-powerbi.webp",
+      gallery: ["assets/img/projects/madura-tableau.webp", "assets/img/projects/madura.webp", "assets/img/projects/madura-merge.webp"],
       context: "Telkomsel",
       title: "Central Madura Network Performance Dashboard",
       hook: "Scored 6,000+ network tiles into Invest / Maintain / Monitor actions.",
@@ -135,13 +135,13 @@ window.SITE = {
         "Implementation-wise, I modified an existing baseline comparison notebook to integrate my models, resolved a scaler mismatch between joblib and pickle formats, and reconstructed return-based outputs back into absolute prices so every model could be compared on the same scale.",
         "I packaged the results into a Streamlit app where users can pick between BBCA, BBRI, or TLKM, set a forecast horizon, and download predictions as CSV."
       ],
-      docs: "https://intip.in/FinalThesis"
+      docs: "https://intip.in/BachelorThesisAhmad"
     },
     {
       featured: true,
       icon: "gauge",
-      image: "assets/img/projects/itsec.webp",
-      gallery: ["assets/img/projects/itsec-2.webp", "assets/img/projects/itsec-3.webp", "assets/img/projects/itsec-4.webp"],
+      image: "assets/img/projects/itsec-dash-1.webp",
+      gallery: ["assets/img/projects/itsec-dash-2.webp", "assets/img/projects/itsec-dash-3.webp", "assets/img/projects/itsec-dash-4.webp"],
       context: "PT ITSEC Asia",
       title: "IT Balanced Scorecard Dashboard — PT ITSEC Asia Case Study",
       hook: "Power BI scorecard across Jakarta HQ and two branch offices.",
@@ -215,8 +215,8 @@ window.SITE = {
     },
     {
       icon: "network",
-      image: "assets/img/projects/ontology.webp",
-      gallery: ["assets/img/projects/ontology-ui.webp"],
+      image: "assets/img/projects/ontology-cover.webp",
+      gallery: ["assets/img/projects/ontology-owl.webp"],
       context: "Cognitive Systems",
       title: "Ontology-Based Expert System for Vespa Fault Diagnosis",
       hook: "Protégé ontology and SWRL rules built with a real service center.",
@@ -230,6 +230,8 @@ window.SITE = {
     },
     {
       icon: "cloud",
+      image: "assets/img/projects/devops-landing.webp",
+      gallery: ["assets/img/projects/devops-tracker.webp", "assets/img/projects/devops-login.webp"],
       context: "DevOps",
       title: "FullstackExpense — DevOps for a Fullstack Expense Tracker",
       hook: "CI/CD with GitHub Actions deploying to Google Cloud Run.",
@@ -276,12 +278,14 @@ window.SITE = {
     },
     {
       icon: "text",
-      context: "Research",
+      image: "assets/img/projects/lda-researchgate.webp",
+      context: "Co-authored research",
       title: "Instagram Topic Modeling using LDA",
       hook: "NLP topic modeling on social media text (co-authored).",
       tags: ["NLP", "LDA", "Topic modeling"],
-      desc: "\"Instagram Topic Modeling using LDA\" — NLP/topic modeling on social media text (co-authored).",
-      docs: ""
+      desc: "This research analyzes topics in late teens' Instagram captions using the Latent Dirichlet Allocation (LDA) model. The main aim of this research is to find out the topics most frequently discussed by teenagers aged 18-21 years through their activities on social media. Research methods include data collection through crawling techniques on selected Instagram accounts, data cleaning to ensure accuracy, and analysis using the LDA model. The research results show that the most dominant topic among late teens is around elections with main words such as \"election\", \"campaign\" and \"healthy\". After cleaning the data by removing stop words, it was found that the topics that appeared most frequently were still related to elections and campaigns. This research concludes that Instagram is used by late teens as a platform to express their views on topics commonly discussed today regarding politics.",
+      docs: "https://doi.org/10.13140/RG.2.2.20480.44806",
+      docsLabel: "Read the paper (DOI)"
     }
   ],
 
@@ -300,7 +304,6 @@ window.SITE = {
       tag: "Internship",
       logo: "assets/img/brands/telkomsel.png",
       photos: [
-        { src: "assets/img/photos/telkomsel-internship.webp", alt: "Internship activities with the Network Performance Analysis and Consolidation team at Telkomsel" },
         { src: "assets/img/photos/telkomsel-speaker.webp", alt: "Speaking as a Telkomsel intern at the HMSI ITS company visit" }
       ],
       highlights: [
@@ -338,7 +341,7 @@ window.SITE = {
       tag: "Internship",
       logo: "assets/img/brands/pelindo.png",
       photos: [
-        { src: "assets/img/photos/pelindo-intern.webp", alt: "Intern group at PT Pelindo Marine Service" }
+        { src: "assets/img/photos/pelindo-intern.webp", alt: "Intern group at PT Pelindo Marine Service", focus: "50% 62%", ratio: "4 / 3" }
       ],
       highlights: [
         "Designed Entity Relationship Diagrams (ERDs) for the MAROON and MARDOC applications to support structured database development",
@@ -359,7 +362,7 @@ window.SITE = {
       tag: "Part-time",
       logo: "assets/img/brands/dbl.png",
       photos: [
-        { src: "assets/img/photos/dbl-crew.webp", alt: "DBL Academy coaching crew" }
+        { src: "assets/img/photos/dbl-crew.webp", alt: "DBL Academy coaching crew", focus: "50% 67%", ratio: "4 / 3" }
       ],
       highlights: [
         "Trains 100–130 children weekly across 6–8 classes, adapting communication and coaching to each age group",
@@ -381,8 +384,10 @@ window.SITE = {
     dates: "Jan 2024 – Dec 2024",
     photo: "assets/img/photos/ise-2024-stage.webp",
     photoAlt: "Rinov speaking on stage at ISE! 2024",
-    photo2: "assets/img/photos/ise-2024.webp",
-    photo2Alt: "ISE! 2024 committee group photo",
+    crew: [
+      { src: "assets/img/photos/ise-2024.webp", alt: "ISE! 2024 committee group photo" },
+      { src: "assets/img/photos/ise-2024-isclass.webp", alt: "ISE! 2024 IS CLASS crew photo" }
+    ],
     stats: [
       { value: "250+", label: "committee members" },
       { value: "1,200+", label: "participants nationwide" },
@@ -393,16 +398,18 @@ window.SITE = {
       "Handled strategic planning, risk mitigation, budgeting, and execution across five major sub-events: BIONIX (national IT/business olympiad), RISE (national business case competition), ISE! Academy (public data science bootcamp), and IS CLASS (campus visit & outreach)"
     ]
   },
-  /* Compact list — role + year only. photo is optional. */
+  /* Compact list — role + year only.
+   *  photo = tile image; photos = images that open in the zoom view (first one used for the tile if no photo).
+   */
   orgRoles: [
-    { name: "SRE ITS SC", role: "Staff of Competency Development", year: "2023/2024" },
-    { name: "HMSI ITS", role: "Internship Staff of Internal Affairs", year: "", photo: "assets/img/org/hmsi-its.webp" },
-    { name: "ITS Sport Competition — Dies Natalis 63", role: "Event Staff", year: "2023", photo: "assets/img/org/isc-2023.webp" },
-    { name: "ISE! 2023", role: "Paradigm Event FOH Staff", year: "2023", photo: "assets/img/org/ise-2023.webp" },
-    { name: "GERIGI ITS 2023", role: "Staff of Main Event", year: "2023", photo: "assets/img/org/gerigi-2023.webp" },
-    { name: "TEDxITS 2023", role: "Staff of Logistics and Consumption", year: "2023", photo: "assets/img/org/tedxits-2023.webp" },
-    { name: "Futurest 2023", role: "Volunteer of Exhibition", year: "2023", photo: "assets/img/org/futurest-2023.webp" },
-    { name: "Ini Lho ITS! 2023", role: "Staff of Logistics, Tools, & Equipments", year: "2023", photo: "assets/img/org/ini-lho-its-2023.webp" }
+    { name: "SRE ITS SC", role: "Staff of Competency Development", year: "2023/2024", photos: ["assets/img/org/sre-its-sc.webp", "assets/img/org/sre-trex.webp"], focus: "50% 40%" },
+    { name: "HMSI ITS", role: "Internship Staff of Internal Affairs", year: "", photo: "assets/img/org/hmsi-its-full.webp", photos: ["assets/img/org/hmsi-its-full.webp"], focus: "50% 100%" },
+    { name: "ITS Sport Competition — Dies Natalis 63", role: "Event Staff", year: "2023", photo: "assets/img/org/isc-2023-full.webp", photos: ["assets/img/org/isc-2023-full.webp"], focus: "50% 90%" },
+    { name: "ISE! 2023", role: "Paradigm Event FOH Staff", year: "2023", photo: "assets/img/org/ise-2023.webp", photos: ["assets/img/org/ise-2023-full.webp"] },
+    { name: "GERIGI ITS 2023", role: "Staff of Main Event", year: "2023", photo: "assets/img/org/gerigi-2023.webp", photos: ["assets/img/org/gerigi-2023-full.webp"] },
+    { name: "TEDxITS 2023", role: "Staff of Logistics and Consumption", year: "2023", photo: "assets/img/org/tedxits-2023.webp", photos: ["assets/img/org/tedxits-2023-full.webp"] },
+    { name: "Futurest 2023", role: "Volunteer of Exhibition", year: "2023", photo: "assets/img/org/futurest-2023.webp", photos: ["assets/img/org/futurest-2023-full.webp"] },
+    { name: "Ini Lho ITS! 2023", role: "Staff of Logistics, Tools, & Equipments", year: "2023", photo: "assets/img/org/ini-lho-its-2023.webp", photos: ["assets/img/org/ini-lho-its-2023-full.webp"] }
   ],
 
   /* ── Skills ─ compact tag chips per category. logo is optional. ──────── */
@@ -451,7 +458,7 @@ window.SITE = {
   },
   certifications: [
     { name: "DevNet Associate", issuer: "Cisco Networking Academy", year: "2025", image: "assets/img/certs/cisco-devnet.webp", logo: "assets/logos/cisco.svg" },
-    { name: "Duolingo English Test — Score 125/B2 (Upper-Intermediate)", issuer: "Duolingo", year: "2024", image: "assets/img/certs/duolingo.webp" },
-    { name: "Introduction to SAP S/4HANA with GBI 4.2", issuer: "SAP", year: "2024", image: "assets/img/certs/sap-s4hana.webp" }
+    { name: "Duolingo English Test — Score 125/B2 (Upper-Intermediate)", issuer: "Duolingo", year: "2024", image: "assets/img/certs/duolingo.webp", logo: "assets/img/brands/duolingo.png" },
+    { name: "Introduction to SAP S/4HANA with GBI 4.2", issuer: "SAP", year: "2024", image: "assets/img/certs/sap-s4hana.webp", logo: "assets/img/brands/sap.png" }
   ]
 };
