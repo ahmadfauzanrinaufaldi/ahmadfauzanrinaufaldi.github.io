@@ -31,7 +31,7 @@ window.SITE = {
 
   /* ── Hero ─────────────────────────────────────────────────────────────── */
   heroHeadline: "I turn messy data into decisions.",
-  heroText: "Information Systems grad from ITS. Built a revenue forecasting system that processed 779,000+ tiles at Telkomsel and a deep learning model for stock price prediction.",
+  heroText: "Information Systems graduate from ITS. Built a revenue forecasting system that processed 779,000+ tiles at Telkomsel and a deep learning model for stock price prediction.",
   heroStats: [
     { value: "779,000+", label: "tiles processed" },
     { value: "1.861%", label: "MAPE at Telkomsel" }
@@ -458,7 +458,7 @@ window.SITE = {
   },
   certifications: [
     { name: "DevNet Associate", issuer: "Cisco Networking Academy", year: "2025", image: "assets/img/certs/cisco-devnet.webp", logo: "assets/logos/cisco.svg" },
-    { name: "Duolingo English Test — Score 125/B2 (Upper-Intermediate)", issuer: "Duolingo", year: "2024", image: "assets/img/certs/duolingo.webp", logo: "assets/img/brands/duolingo.png" },
+    { name: "Duolingo English Test — Score 125/B2 (Upper-Intermediate)", issuer: "Duolingo", year: "2024", image: "assets/img/certs/duolingo.webp", logo: "assets/img/brands/duolingo-mark.png" },
     { name: "Introduction to SAP S/4HANA with GBI 4.2", issuer: "SAP", year: "2024", image: "assets/img/certs/sap-s4hana.webp", logo: "assets/img/brands/sap.png" }
   ]
 };

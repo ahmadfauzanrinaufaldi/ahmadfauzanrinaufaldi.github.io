@@ -69,7 +69,7 @@
     linkedin: S.linkedin,
     github: S.github,
     gmailCompose: S.gmailCompose,
-    email: "mailto:" + S.email,
+    email: S.gmailCompose,
     phone: "tel:" + S.phone.replace(/[^\d+]/g, "")
   };
   document.querySelectorAll("[data-href]").forEach(function (el) {
@@ -345,15 +345,15 @@
   });
 
   /* ── Contact (unchanged) ──────────────────────────── */
-  function contactCard(icon, label, value, href, copy) {
+  function contactCard(icon, label, value, href, copy, newTab) {
     return '<li class="contact-card"><span class="stat-icon">' + svg(ICONS[icon]) + "</span>" +
       '<div><span class="eyebrow">' + esc(label) + "</span>" +
-      (href ? '<a href="' + esc(href) + '">' + esc(value) + "</a>" : "<span>" + esc(value) + "</span>") + "</div>" +
+      (href ? '<a href="' + esc(href) + '"' + (newTab ? ' target="_blank" rel="noopener"' : "") + ">" + esc(value) + "</a>" : "<span>" + esc(value) + "</span>") + "</div>" +
       (copy ? '<button class="copy-btn" type="button" data-copy="' + esc(value) + '" aria-label="Copy ' + esc(label.toLowerCase()) + '">' + svg(ICONS.copy) + "</button>" : "") +
       "</li>";
   }
   $("contact-cards").innerHTML =
-    contactCard("mail", "Email", S.email, hrefs.email, true) +
+    contactCard("mail", "Email", S.email, hrefs.email, true, true) +
     contactCard("phone", "Phone", S.phone, hrefs.phone, true) +
     contactCard("pin", "Based in", S.location);
   document.addEventListener("click", function (ev) {
